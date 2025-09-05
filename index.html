@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Aniversario 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 4rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 2s ease;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      animation: fadeIn 3s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.8);
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+    }
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+    }
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% {transform: translateY(0) rotate(45deg);}
+      100% {transform: translateY(-120vh) rotate(45deg);}
+    }
+
+    section {
+      text-align: center;
+      padding: 40px 20px;
+      color: #fff;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 2s ease;
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+      font-family: 'Sacramento', cursive;
+      font-size: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #fff;
+      color: #ff4d6d;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ff4d6d;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    /* Modal de imágenes */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .modal img {
+      max-width: 80%;
+      max-height: 70%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease;
+    }
+
+    .btn-close {
+      margin-top: 20px;
+      background: #ff4d6d;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+
+  <header>
+    <h1>Feliz 2° Aniversario 💖</h1>
+    <p>Para la mejor novia del mundo: pechocha 💖</p>
+  </header>
+
+  <section>
+    <div class="cards-container">
+      <div class="card">
+        <h2>Mi Amor</h2>
+        <p>
+          Hoy celebramos dos años juntos, y cada día contigo ha sido un regalo maravilloso.  
+          Gracias por tu amor, tu ternura y por hacerme tan feliz.  
+          Quiero que sepas que eres lo más importante en mi vida 💕.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Nuestros Momentos</h2>
+        <p>
+          Cada risa, cada abrazo, cada mirada tuya me recuerda lo afortunado que soy de tenerte.  
+          No importa dónde estemos, mientras sea contigo, siempre será mi lugar favorito ❤️.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Para Siempre</h2>
+        <p>
+          Este es solo el inicio de nuestra historia.  
+          Quiero seguir escribiendo miles de capítulos contigo, porque eres mi razón, mi alegría y mi destino 💖.
+        </p>
+      </div>
+    </div>
+    <span class="btn" onclick="abrirModal()">Haz clic aquí 💌</span>
+  </section>
+
+  <footer>
+    Hecho con todo mi amor para ti 💖
+  </footer>
+
+  <!-- Modal con carrusel de imágenes -->
+  <div id="miModal" class="modal">
+    <img id="carrusel" src="" alt="Fotos nuestras">
+    <button class="btn-close" onclick="cerrarModal()">Cerrar</button>
+  </div>
+
+  <!-- Audio local -->
+  <audio id="musica" src="Hombres G, Morat - El ataque de las chicas cocodrilo.mp3"></audio>
+
+  <script>
+    // Corazones animados
+    function crearCorazones() {
+      const hearts = document.querySelector('.hearts');
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(crearCorazones, 500);
+
+    // Carrusel de fotos
+    const imagenes = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg"]; // <-- reemplaza con tus fotos
+    let indice = 0;
+    let intervalo;
+
+    function abrirModal() {
+      document.getElementById("miModal").style.display = "flex";
+      const img = document.getElementById("carrusel");
+      img.src = imagenes[indice];
+      intervalo = setInterval(() => {
+        indice = (indice + 1) % imagenes.length;
+        img.src = imagenes[indice];
+      }, 2000);
+
+      // Reproducir música
+      document.getElementById("musica").play();
+    }
+
+    function cerrarModal() {
+      document.getElementById("miModal").style.display = "none";
+      clearInterval(intervalo);
+      indice = 0;
+
+      // Pausar música
+      const musica = document.getElementById("musica");
+      musica.pause();
+      musica.currentTime = 0;
+    }
+  </script>
+</body>
+</html>
